@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:31:16 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/17 02:40:22 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/17 22:53:09 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int		init_stack(t_stack *a, t_stack *b, int argc, char **argv);
 int		ft_atoi(char *str);
 int		ft_isdigit(int c);
 void	ft_usage();
+void	ft_swap(t_stack *stack);
 
 #endif

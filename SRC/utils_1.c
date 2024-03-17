@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:43:21 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/17 02:45:49 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/17 23:00:10 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ void	init_structs(t_stack *a, t_stack *b)
 	a->size = 0;
 	a->tab = NULL;
 	a->numbers = NULL;
-	// if (!a->tab)
-	// 	return ;
 	b->id = 2;
 	b->size = 0;
 	b->tab = NULL;
@@ -78,7 +76,7 @@ int	init_stack(t_stack *a, t_stack *b, int argc, char **argv)
 
 	i = 1;
 	init_structs(a, b);
-	while (i < argc - 1)
+	while (i < argc)
 	{
 		if (!add_to_stack(a, ft_atoi(argv[i])))
 			return (0);

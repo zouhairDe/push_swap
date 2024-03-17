@@ -6,14 +6,14 @@
 #    By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 06:26:56 by zouddach          #+#    #+#              #
-#    Updated: 2024/03/17 01:44:06 by zouddach         ###   ########.fr        #
+#    Updated: 2024/03/17 22:52:30 by zouddach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=cc
 CFLAGS= -Werror -Wall -Wextra
 NAME=push_swap
-FILES=push_swap.c utils_1.c utils2.c
+FILES=push_swap.c utils_1.c utils2.c swap.c
 SRC_DIR=SRC/
 HEADER=$(SRC_DIR)push_swap.h
 SRC=$(addprefix $(SRC_DIR), $(FILES))
