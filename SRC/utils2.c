@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 01:35:59 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/17 02:16:43 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/18 02:31:05 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,37 @@ int	ft_atoi(char *str)
 		i++;
 	}
 	return (n * sign);
+}
+
+int	ft_get_smallest(t_stack *a, int number)
+{
+	int	i;
+	int	j;
+	
+	i = 0;
+	j = 0;
+	while (i < a->size)
+	{
+		if (a->numbers[i] < number)
+			j++;
+		i++;
+	}
+	return (j);
+}
+
+int	ft_positive_tab(t_stack *a)
+{
+	//i need to order numbers from 0 to a->size - 1
+	int	i;
+
+	i = 0;
+	a->tab = (int *)malloc(sizeof(int) * a->size);
+	if (!a->tab)
+		return (0);
+	while(i < a->size)
+	{
+		a->tab[i] = ft_get_smallest(a, a->numbers[i]);
+		i++;
+	}
+	return (1);
 }
