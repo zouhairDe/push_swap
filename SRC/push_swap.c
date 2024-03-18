@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:30:56 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/18 01:48:20 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/18 23:08:05 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ void	ft_debug(t_stack *a, t_stack *b)
 	int	i;
 
 	i = 0;
-	printf("Size of stack A:%d\nStack A numbers are:\n", a->size);
-	while (i < a->size)
+	printf("\nSize of stack A:%d\nStack A tab[] are:\n\n", a->size);
+	while (i < a->size && a->tab)
 	{
-		printf("%d\n", a->numbers[i]);
+		printf("%d\n", a->tab[i]);
 		i++;
 	}
 	i = 0;
-	printf("Size of stack B:%d\nStack B numbers are:\n", b->size);
-	while (i < b->size)
+	printf("\nSize of stack B:%d\nStack B tab[] are:\n\n", b->size);
+	while (i < b->size && b->tab[i])
 	{
-		printf("%d\n", b->numbers[i]);
+		printf("%d\n", b->tab[i]);
 		i++;
 	}
 }
@@ -61,7 +61,6 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	if (!init_stack(&stack_a, &stack_b, argc, argv))
 		(fprintf(stderr, "Error\n"), exit(1));
-	// ft_debug(&stack_a, &stack_b);
 	if (stack_a.size == 2)
 		ft_swap(&stack_a);
 	else if (stack_a.size == 3)
@@ -69,10 +68,18 @@ int	main(int argc, char **argv)
 	else
 	{
 		ft_positive_tab(&stack_a);
-		ft_quicksort(&stack_a, &stack_b);
+		ft_debug(&stack_a, &stack_b);
+		ft_push(&stack_a, &stack_b);
+		// ft_debug(&stack_a, &stack_b);
+		ft_push(&stack_a, &stack_b);
+		// ft_debug(&stack_a, &stack_b);
+		ft_push(&stack_a, &stack_b);
+		// ft_debug(&stack_a, &stack_b);
+		ft_push(&stack_b, &stack_a);
+		// ft_quicksort(&stack_a, &stack_b);
 	}
 	// printf("\n\nThe numbers are sorted\n\n");
-	// ft_debug(&stack_a, &stack_b);
+	ft_debug(&stack_a, &stack_b);
 	free_stack(&stack_a, &stack_b);
 	return (0);
 }

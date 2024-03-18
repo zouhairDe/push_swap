@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:31:16 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/18 02:53:31 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/18 22:41:09 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	ft_sort3(t_stack *a);
 int		ft_is_sorted(char **args, int argc);
 int		ft_checks(char **argv);
 int		ft_positive_tab(t_stack *a);
-void	ft_quicksort(t_stack *a, t_stack *b);
+// void	ft_quicksort(t_stack *a, t_stack *b);
+void	ft_push(t_stack *from, t_stack *to);
 
 #endif
