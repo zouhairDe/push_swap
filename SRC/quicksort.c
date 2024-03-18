@@ -38,7 +38,7 @@ void	ft_quicksort(t_stack *a, t_stack *b)
 		if (a->tab[0] >= pivot.first_pivot)
 			ft_rotate(a, 1);
 		else
-			ft_push(b, a, 1);//hna ghaykhsni nder ft_push(t_stack from, t_stack to, int code);
+			ft_push(b, a);//hna ghaykhsni nder ft_push(t_stack from, t_stack to);
 		if (b->size >= pivot.first_pivot)
 			init_pivots(&pivot, a);
 	}

@@ -44,6 +44,10 @@ void	free_stack(t_stack *a, t_stack *b)
 		free(a->numbers);
 	if (b->numbers)
 		free(b->numbers);
+	if (a->tab)
+		free(a->tab);
+	if (b->tab)
+		free(b->tab);
 }
 
 int	main(int argc, char **argv)
