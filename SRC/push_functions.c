@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 03:00:11 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/18 03:03:43 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/18 03:04:11 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_push(t_stack *from, t_stack *to, int code)
 {
-	//khasni npushoi mn from l to gher ra9m lwl
+	//khasni npushi mn from l to gher ra9m lwl
 	if (code == 1)
 		write(1, "pa\n", 3);
 	else
