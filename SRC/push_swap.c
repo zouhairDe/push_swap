@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:30:56 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/18 23:08:05 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/19 00:47:45 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_debug(t_stack *a, t_stack *b)
 	}
 	i = 0;
 	printf("\nSize of stack B:%d\nStack B tab[] are:\n\n", b->size);
-	while (i < b->size && b->tab[i])
+	while (i < b->size && b->tab)
 	{
 		printf("%d\n", b->tab[i]);
 		i++;
@@ -68,15 +68,9 @@ int	main(int argc, char **argv)
 	else
 	{
 		ft_positive_tab(&stack_a);
-		ft_debug(&stack_a, &stack_b);
-		ft_push(&stack_a, &stack_b);
-		// ft_debug(&stack_a, &stack_b);
-		ft_push(&stack_a, &stack_b);
-		// ft_debug(&stack_a, &stack_b);
-		ft_push(&stack_a, &stack_b);
-		// ft_debug(&stack_a, &stack_b);
-		ft_push(&stack_b, &stack_a);
-		// ft_quicksort(&stack_a, &stack_b);
+		ft_quicksort(&stack_a, &stack_b);
+		ft_sort3(&stack_a);
+		ft_b_to_a(&stack_a, &stack_b);
 	}
 	// printf("\n\nThe numbers are sorted\n\n");
 	ft_debug(&stack_a, &stack_b);
