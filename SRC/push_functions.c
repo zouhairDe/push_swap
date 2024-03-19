@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 03:00:11 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/19 00:30:41 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/19 01:14:54 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_maintain_stack(t_stack *from, t_stack *to)
 	return (0);
 }
 
-int	ft_push(t_stack *from, t_stack *to)//from == b and to ==a hia push a || pa
+int	ft_push(t_stack *from, t_stack *to)//from == b and to == a hia push a || pa	√
 {
 	//khasni npushi mn from l to gher ra9m lwl                                                                             √
 	//khasni fach npushi mn stack l stack nreallocer bach n9s blasa w nzid blasa w mannsach size tahia n9sha wla nzidha    √

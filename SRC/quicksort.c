@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 01:33:51 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/19 01:03:40 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/19 01:16:39 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_a_to_b(t_stack *a, t_stack *b, int tracker)
 	if (a->tab[0] - 1 == b->tab[0])
 		ft_push(b, a);
 	else if (a->tab[0] - 1 == b->tab[b->size - 1]) //rrb and pa
-		(ft_rotate_rev(b), ft_push(b, a));
+		(ft_rotate_rev(b, 1), ft_push(b, a));
 }
 
 int	ft_b_to_a(t_stack *a, t_stack *b)

@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:31:16 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/19 00:40:28 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/19 01:18:17 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	ft_sort3(t_stack *a); //sorts 3 numbers
 void	ft_swap(t_stack *stack); //stands for sa || sb
 void	ft_rotate(t_stack *stack, int code); // stands for ra || rb
 void	ft_rerotate(t_stack *a, t_stack *b); //stands for rr
-void	ft_rotate_rev(t_stack *stack); // stands for rra || rrb
+void	ft_rotate_rev(t_stack *stack, int code); // stands for rra || rrb
 void	ft_rerotate_rev(t_stack *a, t_stack *b); //stands for rrr
-void	ft_push(t_stack *from, t_stack *to); // stands for pa || pb
+int	ft_push(t_stack *from, t_stack *to); // stands for pa || pb
 
 #endif
