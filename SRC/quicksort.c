@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 01:33:51 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/20 04:13:43 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/20 07:03:36 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_quicksort(t_stack *a, t_stack *b)
 {
 	t_pivot	pivot;
 
-	pivot.last_pivot = -1;
+	pivot.last_pivot = 0;
 	pivot.first_pivot = 0;
 	pivot.sec_pivot = a->size / 6 + pivot.first_pivot;
 	pivot.first_pivot = a->size / 3 + pivot.first_pivot;
@@ -68,10 +68,10 @@ void	ft_a_to_b(t_stack *a, t_stack *b, int *tracker)
 		(ft_rotate_rev(b, 1), ft_push(b, a));
 	else if (!(*tracker))
 		(ft_push(b, a), ft_rotate(a, 1), (*tracker)++);
-	else if (b->tab[0] > a->tab[a->size - 1])
-		(ft_push(b, a), ft_rotate(a, 1), (*tracker)++);
 	else if (a->tab[0] - 1 == a->tab[a->size - 1])
 		(ft_rotate_rev(a, 1), (*tracker)--);
+	else if (b->tab[0] > a->tab[a->size - 1])
+		(ft_push(b, a), ft_rotate(a, 1), (*tracker)++);
 	else if (a->tab[a->size - 1] < b->tab[b->size - 1])
 		(ft_rotate_rev(b, 1), ft_push(b, a), ft_rotate(a, 1), (*tracker)++);
 	else

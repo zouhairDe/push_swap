@@ -6,37 +6,81 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 01:35:59 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/18 22:59:28 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/20 10:29:00 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(char *str)
+size_t	ft_strlen(const char *str)
 {
-	int		i;
-	long	n;
-	int		sign;
+	int	i;
 
 	i = 0;
-	n = 0;
-	sign = 1;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (!str)
+		return (0);
+	while (*str)
 	{
-		if (str[i] == '-')
-			sign = -1;
+		str++;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		n = n * 10 + (str[i] - '0');
-		i++;
-	}
-	return (n * sign);
+	return (i);
 }
+
+int	ft_larger_than(char *str, char *max)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = ft_strlen(max);
+	while (*str == '0')
+		str++;
+	while (*(str + i) >= '0' && *(str + i) <= '9')
+		i++;
+	if (i > len)
+		return (1);
+	else if (i < len)
+		return (0);
+	while (*str >= '0' && *str <= '9')
+	{
+		if (*str > *max)
+			return (1);
+		else if (*str++ < *max++)
+			return (0);
+	}
+	return (0);
+}
+
+int	ft_atoi(char *str)
+{
+	int		nbr;
+	char	sign;
+
+	nbr = 0;
+	sign = 1;
+	while ((*str >= 9 && *str <= 13) || *str == ' ')
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str++ == '-')
+		{
+			sign = -1;
+			if (ft_larger_than(str, "2147483648"))
+				return (-1);
+		}
+		else
+			if (ft_larger_than(str, "2147483647"))
+				return (-1);
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		nbr = (nbr * 10) + (*str - '0') * sign;
+		str++;
+	}
+	return (nbr);
+}
+
 
 int	ft_get_smallest(t_stack *a, int number)
 {

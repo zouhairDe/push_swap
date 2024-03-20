@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:43:21 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/20 03:09:21 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/20 09:39:34 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	init_stack(t_stack *a, t_stack *b, int argc, char **argv)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	init_structs(a, b);
 	while (i < argc)
 	{

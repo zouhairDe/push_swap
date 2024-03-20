@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:30:56 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/20 04:20:01 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/20 10:38:16 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,23 @@
 
 void	ft_usage(void)
 {
-	printf("Error:\nUsage: ./push_swap [numbers]\n");
+	fprintf(stderr, "Error\n");
 	exit(1);
 }
 
-void	ft_debug(t_stack *a, t_stack *b)
+int	ft_twod_len(char **argv)
 {
 	int	i;
 
 	i = 0;
-	printf("\nSize of stack A:%d\nStack A tab[] are:\n\n", a->size);
-	while (i < a->size && a->tab)
-	{
-		printf("%d\n", a->tab[i]);
+	while (argv[i])
 		i++;
-	}
-	i = 0;
-	printf("\nSize of stack B:%d\nStack B tab[] are:\n\n", b->size);
-	while (i < b->size && b->tab)
+	if (i == 1)
 	{
-		printf("%d\n", b->tab[i]);
-		i++;
+		fprintf(stderr, "Error\n");
+		exit(1);
 	}
+	return (i);
 }
 
 void	free_stack(t_stack *a, t_stack *b)
@@ -50,38 +45,44 @@ void	free_stack(t_stack *a, t_stack *b)
 		free(b->tab);
 }
 
+void	ft_sumilate_args(int argc, char **argv, t_stack *a, t_stack *b)
+{
+	if (argc == 2)
+	{
+		argv = ft_split(argv[1], ' ');   //khasni nfree
+		if (!argv)
+			exit(1);
+		if (!init_stack(a, b, ft_twod_len(argv), argv))
+			(fprintf(stderr, "Error\n"), exit(1));
+	}
+	else if (!init_stack(a, b, argc - 1, ++argv))
+		(fprintf(stderr, "Error\n"), exit(1));
+	if (ft_checks(argv))
+		ft_usage();
+	ft_positive_tab(a);
+	
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
-
-	if (argc < 2 || ft_checks(argv))
-		ft_usage();
-	// else if (argc == 2)
-	// 	argv = ft_split(argv[1], ' ');
-	if (ft_is_sorted(argv, argc))
-		exit(EXIT_FAILURE);
-	if (!init_stack(&stack_a, &stack_b, argc, argv))
-		(fprintf(stderr, "Error\n"), exit(1));
-	ft_positive_tab(&stack_a);
-	for (int i = 0; i < stack_a.size; i++)
-	{
-		printf("%d ",stack_a.tab[i]);
-	}
-		printf("\n");
+	
+	if (argc < 2)
+		return (0);
+	ft_sumilate_args(argc, argv, &stack_a, &stack_b);
+	if (ft_is_sorted(&stack_a))
+		return (0);
 	if (stack_a.size == 2)
 		ft_swap(&stack_a);
 	else if (stack_a.size == 3)
 		ft_sort3(&stack_a);
 	else
 	{
-		// ft_debug(&stack_a, &stack_b);
 		ft_quicksort(&stack_a, &stack_b);
 		ft_sort3(&stack_a);
 		ft_b_to_a(&stack_a, &stack_b);
 	}
-	// printf("\n\nThe numbers are sorted\n\n");
-	// ft_debug(&stack_a, &stack_b);
 	free_stack(&stack_a, &stack_b);
 	return (0);
 }
