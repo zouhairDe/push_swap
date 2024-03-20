@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:30:56 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/19 01:18:08 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/20 04:20:01 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,31 @@ int	main(int argc, char **argv)
 
 	if (argc < 2 || ft_checks(argv))
 		ft_usage();
+	// else if (argc == 2)
+	// 	argv = ft_split(argv[1], ' ');
 	if (ft_is_sorted(argv, argc))
 		exit(EXIT_FAILURE);
 	if (!init_stack(&stack_a, &stack_b, argc, argv))
 		(fprintf(stderr, "Error\n"), exit(1));
+	ft_positive_tab(&stack_a);
+	for (int i = 0; i < stack_a.size; i++)
+	{
+		printf("%d ",stack_a.tab[i]);
+	}
+		printf("\n");
 	if (stack_a.size == 2)
 		ft_swap(&stack_a);
 	else if (stack_a.size == 3)
 		ft_sort3(&stack_a);
 	else
 	{
-		ft_positive_tab(&stack_a);
 		// ft_debug(&stack_a, &stack_b);
 		ft_quicksort(&stack_a, &stack_b);
 		ft_sort3(&stack_a);
 		ft_b_to_a(&stack_a, &stack_b);
 	}
 	// printf("\n\nThe numbers are sorted\n\n");
-	ft_debug(&stack_a, &stack_b);
+	// ft_debug(&stack_a, &stack_b);
 	free_stack(&stack_a, &stack_b);
 	return (0);
 }

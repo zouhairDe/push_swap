@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:38:13 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/19 01:13:44 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/20 04:10:17 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	ft_swap(t_stack *stack)
 
 	if (stack->size < 2)
 		return ;
-	tmp = stack->numbers[0];
-	stack->numbers[0] = stack->numbers[1];
-	stack->numbers[1] = tmp;
+	tmp = stack->tab[0];
+	stack->tab[0] = stack->tab[1];
+	stack->tab[1] = tmp;
 	if (stack->id == 1)
 		write(1, "sa\n", 3);
 	else
@@ -35,14 +35,14 @@ void	ft_rotate(t_stack *stack, int code)
 
 	if (stack->size < 2)
 		return ;
-	tmp = stack->numbers[0];
+	tmp = stack->tab[0];
 	i = 0;
 	while (i < stack->size - 1)
 	{
-		stack->numbers[i] = stack->numbers[i + 1];
+		stack->tab[i] = stack->tab[i + 1];
 		i++;
 	}
-	stack->numbers[i] = tmp;
+	stack->tab[i] = tmp;
 	if (code != 0)
 	{
 		if (stack->id == 1)
@@ -60,14 +60,14 @@ void	ft_rotate_rev(t_stack *stack, int code)
 
 	if (stack->size < 2)
 		return ;
-	tmp = stack->numbers[stack->size - 1];
+	tmp = stack->tab[stack->size - 1];
 	i = stack->size - 1;
 	while (i > 0)
 	{
-		stack->numbers[i] = stack->numbers[i - 1];
+		stack->tab[i] = stack->tab[i - 1];
 		i--;
 	}
-	stack->numbers[i] = tmp;
+	stack->tab[i] = tmp;
 	if (code != 0)
 	{
 		if (stack->id == 1)

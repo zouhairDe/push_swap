@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:43:21 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/17 23:00:10 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/20 03:09:21 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	add_to_stack(t_stack *a, int value)
 		i++;
 	}
 	new_tab[i] = value;
-	new_tab[i + 1] = '\0';
 	free(a->numbers);
 	a->numbers = new_tab;
 	a->size++;

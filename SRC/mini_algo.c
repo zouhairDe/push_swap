@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 00:59:14 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/19 01:14:35 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/20 03:14:37 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	ft_sort3(t_stack *a)
 {
-	if (a->numbers[0] > a->numbers[1] && a->numbers[0] < a->numbers[2])
+	if (a->tab[0] > a->tab[1] && a->tab[0] < a->tab[2])
 		ft_swap(a);
-	else if (a->numbers[0] > a->numbers[1] && a->numbers[0] > a->numbers[2])
+	else if (a->tab[0] > a->tab[1] && a->tab[0] > a->tab[2])
 		ft_rotate_rev(a, 1);
-	else if (a->numbers[0] > a->numbers[1] && a->numbers[0] > a->numbers[2])
+	else if (a->tab[0] > a->tab[1] && a->tab[0] > a->tab[2])
 		ft_rotate(a, 1);
-	else if (a->numbers[0] < a->numbers[1] && a->numbers[0] > a->numbers[2])
+	else if (a->tab[0] < a->tab[1] && a->tab[0] > a->tab[2])
 		ft_rotate_rev(a, 1);
-	else if (a->numbers[0] < a->numbers[1] && a->numbers[0] < a->numbers[2])
+	else if (a->tab[0] < a->tab[1] && a->tab[0] < a->tab[2])
 	{
 		ft_swap(a);
 		ft_rotate(a, 1);
