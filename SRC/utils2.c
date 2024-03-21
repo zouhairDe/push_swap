@@ -6,11 +6,22 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 01:35:59 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/20 10:29:00 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/21 01:38:29 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_is_all_digit(char *str)
+{
+	while (*str)
+	{
+		if (*str < '0' || *str > '9')
+			return (0);
+		str++;
+	}
+	return (1);
+}
 
 size_t	ft_strlen(const char *str)
 {
@@ -61,6 +72,8 @@ int	ft_atoi(char *str)
 	sign = 1;
 	while ((*str >= 9 && *str <= 13) || *str == ' ')
 		str++;
+	if (!ft_is_all_digit(str))
+		ft_usage();
 	if (*str == '-' || *str == '+')
 	{
 		if (*str++ == '-')

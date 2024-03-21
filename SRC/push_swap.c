@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:30:56 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/20 10:45:02 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/21 01:47:31 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ int	ft_twod_len(char **argv)
 	return (i);
 }
 
-void	free_stack(t_stack *a, t_stack *b)
+void	free_stack(t_stack *a, t_stack *b, char ***argv, int argc)
 {
+	int i = 1;
 	if (a->numbers)
 		free(a->numbers);
 	if (b->numbers)
@@ -43,6 +44,11 @@ void	free_stack(t_stack *a, t_stack *b)
 		free(a->tab);
 	if (b->tab)
 		free(b->tab);
+	if (argc == 2 && *argv)
+	{
+		while ((*argv)[i])
+			free((*argv)[i++]);
+	}
 }
 
 void	ft_sumilate_args(int argc, char **argv, t_stack *a, t_stack *b)
@@ -85,7 +91,8 @@ int	main(int argc, char **argv)
 		ft_sort3(&stack_a);
 		ft_b_to_a(&stack_a, &stack_b);
 	}
-	free_stack(&stack_a, &stack_b);
+	free_stack(&stack_a, &stack_b, &argv, argc);
+	while(1);
 	return (0);
 }
 //nafs ra9m 2 mrat not supported
