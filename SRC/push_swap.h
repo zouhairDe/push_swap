@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:31:16 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/20 08:46:53 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/24 16:28:22 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int		ft_positive_tab(t_stack *a);
 int		ft_larger_than(char *str, char *max);
 void	ft_quicksort(t_stack *a, t_stack *b);
 void	ft_b_to_a(t_stack *a, t_stack *b);
-void	ft_usage();
+void	ft_usage(t_stack *a, t_stack *b);
+int		ft_isnumber(char *str);
 char	**ft_split(char *str, char c);
 //Sorting functions here
 void	ft_sort3(t_stack *a); //sorts 3 numbers

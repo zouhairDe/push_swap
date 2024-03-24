@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 01:28:18 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/20 10:34:21 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/24 17:04:42 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ int	ft_is_duplicate(char	**argv)
 		while (argv[j])
 		{
 			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
-			{
-				fprintf(stderr, "Error\n");
-				exit(1);
-			}
+				return (1);
 			j++;
 		}
 		i++;
@@ -80,27 +77,17 @@ int	ft_is_biger_than_ints(char **argv)
 int ft_checks(char **argv)
 {
 	int i;
-	int j;
 
-	i = 0;
+	i = 1;
 	while (argv[i])
 	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if (argv[i][j] == '-' || argv[i][j] == '+')
-				j++;
-			if (!ft_isdigit(argv[i][j]))
-				(fprintf(stderr, "Error\n"), exit(1));
-			j++;
-		}
+		if (!ft_isnumber(argv[i]))
+			return (1);
 		i++;
 	}
-	ft_is_duplicate(argv);
+	if (ft_is_duplicate(argv))
+		return (1);
 	if (!ft_is_biger_than_ints(argv))
-	{
-		fprintf(stderr, "Error\n");
-		exit(1);
-	}
+		return(1);
 	return (0);
 }

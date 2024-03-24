@@ -6,17 +6,11 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:30:56 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/21 01:47:31 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/24 17:07:17 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_usage(void)
-{
-	fprintf(stderr, "Error\n");
-	exit(1);
-}
 
 int	ft_twod_len(char **argv)
 {
@@ -26,16 +20,13 @@ int	ft_twod_len(char **argv)
 	while (argv[i])
 		i++;
 	if (i == 1)
-	{
-		fprintf(stderr, "Error\n");
-		exit(1);
-	}
+		return (0);//to handle later ila kan hi ra9m wahd
 	return (i);
 }
 
-void	free_stack(t_stack *a, t_stack *b, char ***argv, int argc)
+void	free_stack(t_stack *a, t_stack *b, char **argv, int argc)
 {
-	int i = 1;
+	int i = 0;
 	if (a->numbers)
 		free(a->numbers);
 	if (b->numbers)
@@ -44,33 +35,48 @@ void	free_stack(t_stack *a, t_stack *b, char ***argv, int argc)
 		free(a->tab);
 	if (b->tab)
 		free(b->tab);
-	if (argc == 2 && *argv)
+}
+
+void	free_argv(char **argv, int len)
+{
+	int i = 0;
+	while (argv[i])
 	{
-		while ((*argv)[i])
-			free((*argv)[i++]);
+		free(argv[i]);
+		i++;
 	}
+	free(argv);
 }
 
 void	ft_sumilate_args(int argc, char **argv, t_stack *a, t_stack *b)
 {
+	int i;
 	if (argc == 2)
 	{
-		argv = ft_split(argv[1], ' ');   //khasni nfree
+		argv = ft_split(argv[1], ' ');
 		if (!argv)
 			exit(1);
-		if (!init_stack(a, b, ft_twod_len(argv), argv))
-			(fprintf(stderr, "Error\n"), exit(1));
+		if (!init_stack(a, b, ft_twod_len(argv), argv) || ft_checks(argv))
+		{
+			free_argv(argv, ft_twod_len(argv));
+			ft_usage(a, b);
+		}
+		free_argv(argv, ft_twod_len(argv));
 	}
-	else if (!init_stack(a, b, argc - 1, ++argv))
-		(fprintf(stderr, "Error\n"), exit(1));
-	if (ft_checks(argv))
-		ft_usage();
-	ft_positive_tab(a);
-	
+	else if (!init_stack(a, b, argc - 1, ++argv) || ft_checks(argv))
+		ft_usage(a, b);
+	if (!ft_positive_tab(a))
+		ft_usage(a, b);
 }
+
+// void	f(void)
+// {
+// 	system("leaks push_swap");
+// }
 
 int	main(int argc, char **argv)
 {
+	// atexit(f);
 	t_stack	stack_a;
 	t_stack	stack_b;
 	
@@ -91,8 +97,6 @@ int	main(int argc, char **argv)
 		ft_sort3(&stack_a);
 		ft_b_to_a(&stack_a, &stack_b);
 	}
-	free_stack(&stack_a, &stack_b, &argv, argc);
-	while(1);
+	free_stack(&stack_a, &stack_b, argv, argc);
 	return (0);
 }
-//nafs ra9m 2 mrat not supported

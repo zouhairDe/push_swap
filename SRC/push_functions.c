@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 03:00:11 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/19 01:14:54 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/22 00:51:18 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_maintain_stack(t_stack *from, t_stack *to)
 	if (from->size == 0)
 		return (1);
 	if(fr_reallocate_stack(from, to, &tmp_from, &tmp_to))
-		return (1);// hna khasni nfree kolchi li 9bl w nkhrj b failure status
+		return (1); // hna khasni nfree kolchi li 9bl w nkhrj b failure status
 	i = -1;
 	while (++i < from->size - 1)
 		tmp_from[i] = from->tab[i + 1];

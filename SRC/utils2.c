@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 01:35:59 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/21 01:38:29 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/24 16:39:14 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	ft_is_all_digit(char *str)
 {
+	if (!str || !*str)
+		return (0);
 	while (*str)
 	{
 		if (*str < '0' || *str > '9')
@@ -73,7 +75,7 @@ int	ft_atoi(char *str)
 	while ((*str >= 9 && *str <= 13) || *str == ' ')
 		str++;
 	if (!ft_is_all_digit(str))
-		ft_usage();
+		ft_usage(NULL, NULL);
 	if (*str == '-' || *str == '+')
 	{
 		if (*str++ == '-')

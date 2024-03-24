@@ -6,14 +6,14 @@
 #    By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 06:26:56 by zouddach          #+#    #+#              #
-#    Updated: 2024/03/20 09:14:25 by zouddach         ###   ########.fr        #
+#    Updated: 2024/03/24 16:23:34 by zouddach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=cc
 CFLAGS=#-g -fsanitize=address -Werror -Wall -Wextra #
 NAME=push_swap
-FILES=push_swap.c utils_1.c utils2.c checks.c functions.c mini_algo.c push_functions.c quicksort.c ft_split.c
+FILES=push_swap.c utils_1.c utils2.c checks.c functions.c mini_algo.c push_functions.c quicksort.c ft_split.c error_manager.c
 SRC_DIR=SRC/
 HEADER=$(SRC_DIR)push_swap.h
 SRC=$(addprefix $(SRC_DIR), $(FILES))
