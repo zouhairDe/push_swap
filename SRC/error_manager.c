@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 16:23:13 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/24 23:41:55 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/24 23:44:54 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_free_all(t_stack *a, t_stack *b)
 
 void	ft_usage(t_stack *a, t_stack *b)
 {
-	fprintf(stderr, "Error\n");
+	write(2, "Error\n", 6);
 	if (a != NULL && b != NULL)
 		ft_free_all(a, b);
 	exit(EXIT_FAILURE);
