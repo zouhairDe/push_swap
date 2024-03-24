@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:26:56 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/20 10:44:44 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/24 23:25:50 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	**ft_split(char *str, char c)
 	if (!str)
 		return (NULL);
 	words = (char **)malloc(sizeof(char *) * (ft_countwords(str, c) + 1));
-	if (!words) // khsni nfree
+	if (!words)
 		return (NULL);
 	while (*str)
 	{

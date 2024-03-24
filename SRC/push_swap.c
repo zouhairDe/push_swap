@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:30:56 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/24 17:07:17 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/24 23:42:26 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int	ft_twod_len(char **argv)
 	i = 0;
 	while (argv[i])
 		i++;
-	if (i == 1)
-		return (0);//to handle later ila kan hi ra9m wahd
 	return (i);
 }
 
 void	free_stack(t_stack *a, t_stack *b, char **argv, int argc)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	if (a->numbers)
 		free(a->numbers);
 	if (b->numbers)
@@ -39,7 +39,9 @@ void	free_stack(t_stack *a, t_stack *b, char **argv, int argc)
 
 void	free_argv(char **argv, int len)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (argv[i])
 	{
 		free(argv[i]);
@@ -50,12 +52,18 @@ void	free_argv(char **argv, int len)
 
 void	ft_sumilate_args(int argc, char **argv, t_stack *a, t_stack *b)
 {
-	int i;
+	int	i;
+
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
 		if (!argv)
 			exit(1);
+		if (ft_twod_len(argv) == 1 && !ft_isnumber(argv[0]))
+		{
+			free_argv(argv, ft_twod_len(argv));
+			ft_usage(NULL, NULL);
+		}
 		if (!init_stack(a, b, ft_twod_len(argv), argv) || ft_checks(argv))
 		{
 			free_argv(argv, ft_twod_len(argv));
@@ -69,17 +77,11 @@ void	ft_sumilate_args(int argc, char **argv, t_stack *a, t_stack *b)
 		ft_usage(a, b);
 }
 
-// void	f(void)
-// {
-// 	system("leaks push_swap");
-// }
-
 int	main(int argc, char **argv)
 {
-	// atexit(f);
 	t_stack	stack_a;
 	t_stack	stack_b;
-	
+
 	if (argc < 2)
 		return (0);
 	ft_sumilate_args(argc, argv, &stack_a, &stack_b);

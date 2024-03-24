@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:43:21 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/24 17:03:07 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/24 23:38:35 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_isnumber(char *str)
 	if ((str[i] == '-' || str[i] == '+') && ft_isdigit(str[i + 1]))
 		i++;
 	else
-	{	
+	{
 		while (str[i])
 		{
 			if (!ft_isdigit(str[i]))
@@ -54,6 +54,8 @@ int	ft_isnumber(char *str)
 			i++;
 		}
 	}
+	if (i == 0)
+		return (0);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 01:33:51 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/24 17:01:05 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/24 23:19:39 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_quicksort(t_stack *a, t_stack *b)
 	pivot.first_pivot = 0;
 	pivot.sec_pivot = a->size / 6 + pivot.first_pivot;
 	pivot.first_pivot = a->size / 3 + pivot.first_pivot;
-	while(a->size > 3)
+	while (a->size > 3)
 	{
 		if (b->size > 1 && a->tab[0] >= pivot.first_pivot
 			&& b->tab[0] < pivot.sec_pivot && b->tab[0] > pivot.last_pivot)
@@ -77,26 +77,10 @@ void	ft_a_to_b(t_stack *a, t_stack *b, int *tracker)
 	else
 	{
 		pos = get_pos(b, a->tab[0] - 1);
-		// printf("POS IS = %d, size A: %d, size B: %d\n", pos, a->size, b->size);
-		if (pos <= b->size / 2){
-			// printf("A->TAB[0] - 1 = %d | POS IN B IS = %d | B->TAB[POS] = %d\n", a->tab[0] - 1, pos, b->tab[pos]);
-			// printf("BBBBBB STACK SIZE IS ======= %d | POS IS ======= %d, A STACK IS\n", b->size, pos);
-			// for (int i = 0; i < b->size; i++){
-			// 	printf("%d ", b->tab[i]);
-			// 	fflush(stdout);
-			// }
-			// sleep(4);
+		if (pos <= b->size / 2)
 			ft_rotate(b, 1);
-		}
-		else{
-			// printf("BBBBBB STACK SIZE IS ======= %d | POS IS ======= %d, B STACK IS\n", b->size, pos);
-			// for (int i = 0; i < b->size; i++){
-			// 	printf("%d ", b->tab[i]);
-			// 	fflush(stdout);
-			// }
-				// sleep(4);
+		else
 			ft_rotate_rev(b, 1);
-		}
 	}
 }
 
@@ -105,8 +89,8 @@ void	ft_b_to_a(t_stack *a, t_stack *b)
 	int	tracker;
 
 	tracker = 0;
-	while(b->size > 0)
+	while (b->size > 0)
 		ft_a_to_b(a, b, &tracker);
-	while(a->tab[0] - 1 == a->tab[a->size - 1])
+	while (a->tab[0] - 1 == a->tab[a->size - 1])
 		ft_rotate_rev(a, 1);
 }

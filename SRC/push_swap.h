@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:31:16 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/24 16:28:22 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/24 23:12:11 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-
-// #define malloc(x) NULL
 
 typedef struct s_stack
 {
@@ -47,6 +45,7 @@ void	ft_b_to_a(t_stack *a, t_stack *b);
 void	ft_usage(t_stack *a, t_stack *b);
 int		ft_isnumber(char *str);
 char	**ft_split(char *str, char c);
+size_t	ft_strlen(const char *str);
 //Sorting functions here
 void	ft_sort3(t_stack *a); //sorts 3 numbers
 void	ft_swap(t_stack *stack); //stands for sa || sb

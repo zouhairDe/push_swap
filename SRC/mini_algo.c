@@ -6,16 +6,31 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 00:59:14 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/20 09:55:51 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/24 23:25:33 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+size_t	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (*str)
+	{
+		str++;
+		i++;
+	}
+	return (i);
+}
+
 void	ft_sort3(t_stack *a)
 {
-	int start;
-	int end;
+	int	start;
+	int	end;
 
 	start = a->tab[0];
 	end = a->tab[2];

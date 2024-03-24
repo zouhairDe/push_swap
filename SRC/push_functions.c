@@ -6,13 +6,13 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 03:00:11 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/22 00:51:18 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/24 23:24:57 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	fr_reallocate_stack(t_stack *from, t_stack *to, int **tmp_from, int **tmp_to)
+int	fr_realloc_stack(t_stack *from, t_stack *to, int **tmp_from, int **tmp_to)
 {
 	*tmp_from = (int *)malloc(sizeof(int) * (from->size - 1));
 	if (!tmp_from)
@@ -28,14 +28,14 @@ int	fr_reallocate_stack(t_stack *from, t_stack *to, int **tmp_from, int **tmp_to
 
 int	ft_maintain_stack(t_stack *from, t_stack *to)
 {
-	int *tmp_from;
-	int *tmp_to;
-	int i;
+	int	*tmp_from;
+	int	*tmp_to;
+	int	i;
 
 	if (from->size == 0)
 		return (1);
-	if(fr_reallocate_stack(from, to, &tmp_from, &tmp_to))
-		return (1); // hna khasni nfree kolchi li 9bl w nkhrj b failure status
+	if (fr_realloc_stack(from, to, &tmp_from, &tmp_to))
+		return (1);
 	i = -1;
 	while (++i < from->size - 1)
 		tmp_from[i] = from->tab[i + 1];
@@ -52,12 +52,10 @@ int	ft_maintain_stack(t_stack *from, t_stack *to)
 	return (0);
 }
 
-int	ft_push(t_stack *from, t_stack *to)//from == b and to == a hia push a || pa	√
+int	ft_push(t_stack *from, t_stack *to)
 {
-	//khasni npushi mn from l to gher ra9m lwl                                                                             √
-	//khasni fach npushi mn stack l stack nreallocer bach n9s blasa w nzid blasa w mannsach size tahia n9sha wla nzidha    √
 	if (ft_maintain_stack(from, to))
-		return (1);//hna khasni tkhrj
+		return (1);
 	if (to->id == 1)
 		write(1, "pa\n", 3);
 	else
