@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:31:16 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/25 00:49:19 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/25 01:40:30 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
+# include "GNL/get_next_line_bonus.h"
 # include <stdio.h>
 # include <unistd.h>
+# include <fcntl.h>
 # include <stdlib.h>
 
 typedef struct s_stack
@@ -39,18 +41,20 @@ int		ft_is_sorted(t_stack *a);
 int		ft_checks(char **argv);
 int		ft_positive_tab(t_stack *a);
 int		ft_larger_than(char *str, char *max);
+int		ft_isnumber(char *str);
 void	ft_quicksort(t_stack *a, t_stack *b);
 void	ft_b_to_a(t_stack *a, t_stack *b);
 void	ft_usage(t_stack *a, t_stack *b);
-int		ft_isnumber(char *str);
+void	ft_get_instructions(t_stack *a, t_stack *b);
 char	**ft_split(char *str, char c);
 size_t	ft_strlen(const char *str);
 //Sorting functions here
 void	ft_sort3(t_stack *a); //sorts 3 numbers
 void	ft_swap(t_stack *stack); //stands for sa || sb
-void	ft_rotate(t_stack *stack, int code); // stands for ra || rb
+void	ft_sswap(t_stack *a, t_stack *b); //stands for ss
+void	ft_rotate(t_stack *stack); // stands for ra || rb
 void	ft_rerotate(t_stack *a, t_stack *b); //stands for rr
-void	ft_rotate_rev(t_stack *stack, int code); // stands for rra || rrb
+void	ft_rotate_rev(t_stack *stack); // stands for rra || rrb
 void	ft_rerotate_rev(t_stack *a, t_stack *b); //stands for rrr
 int		ft_push(t_stack *from, t_stack *to); // stands for pa || pb
 #endif
