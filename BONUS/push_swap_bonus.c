@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:30:56 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/25 02:00:46 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/25 02:02:43 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,11 @@ void	ft_sumilate_args(int argc, char **argv, t_stack *a, t_stack *b)
 		ft_usage(a, b);
 }
 
-void	f(void)
-{
-	system("leaks checker");
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
 
-	atexit(f);
 	if (argc < 2)
 		return (0);
 	ft_sumilate_args(argc, argv, &stack_a, &stack_b);

@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 22:47:05 by zouddach          #+#    #+#             */
-/*   Updated: 2023/12/02 10:07:43 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/03/25 02:02:57 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_strdup(char *str)
 
 char	*ft_strjoin(char *buffer, char *return_val)
 {
-	char	*result; 
+	char	*result;
 	int		i;
 	int		return_vall;
 	int		bufferl;
