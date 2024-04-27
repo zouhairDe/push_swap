@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 01:33:51 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/24 23:19:39 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/04/21 17:20:56 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	get_pos(t_stack *b, int a_tab)
 	return (i);
 }
 
-void	ft_a_to_b(t_stack *a, t_stack *b, int *tracker)
+void	ft_b_too_a(t_stack *a, t_stack *b, int *tracker)
 {
 	int	pos;
 
@@ -90,7 +90,7 @@ void	ft_b_to_a(t_stack *a, t_stack *b)
 
 	tracker = 0;
 	while (b->size > 0)
-		ft_a_to_b(a, b, &tracker);
+		ft_b_too_a(a, b, &tracker);
 	while (a->tab[0] - 1 == a->tab[a->size - 1])
 		ft_rotate_rev(a, 1);
 }

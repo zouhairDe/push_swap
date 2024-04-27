@@ -6,11 +6,86 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 00:59:14 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/24 23:25:33 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/04/27 23:53:07 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_sort4(t_stack *a, t_stack *b)
+{
+	int i;
+	int	zero_pos;
+	int	mid;
+
+	i = 0;
+	zero_pos = 0;
+	mid = a->size / 2;
+	while(i < a->size && a->tab[i++] != 0)
+		zero_pos++;
+	i = 0;
+	while(a->tab[i] != 0)
+	{
+		if (zero_pos < mid)
+			ft_rotate(a, 1);
+		else
+			ft_rotate_rev(a, 1);
+	}
+	ft_push(a, b);
+	ft_sort3(a);
+	ft_push(b, a);
+}
+
+void	ft_complete_sort5(t_stack *a, t_stack *b, int mid)
+{
+	int i;
+	int	zero_pos;
+
+	i = 0;
+	zero_pos = 0;
+	while(i < a->size && a->tab[i++] != 1)
+		zero_pos++;
+	i = 0;
+	while(a->tab[i] != 1)
+	{
+		if (zero_pos < mid)
+			ft_rotate(a, 1);
+		else
+			ft_rotate_rev(a, 1);
+	}
+	ft_push(a, b);
+	ft_sort3(a);
+	ft_push(b, a);
+	ft_push(b, a);
+}
+
+void	ft_sort_5_and_4(t_stack *a, t_stack *b)
+{
+	int i;
+	int	zero_pos;
+	int	mid;
+
+	if (a->size == 4)
+		ft_sort4(a, b);
+	else
+	{
+		i = 0;
+		zero_pos = 0;
+		mid = a->size / 2;
+		while(i < a->size && a->tab[i++] != 0)
+			zero_pos++;
+		i = 0;
+		while(a->tab[i] != 0)
+		{
+			if (zero_pos < mid)
+				ft_rotate(a, 1);
+			else
+				ft_rotate_rev(a, 1);
+		}
+		ft_push(a, b);
+		ft_complete_sort5(a, b, mid);
+	}
+}
 
 size_t	ft_strlen(const char *str)
 {

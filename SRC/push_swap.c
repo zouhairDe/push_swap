@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:30:56 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/25 00:45:56 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/04/27 23:52:25 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ int	main(int argc, char **argv)
 		ft_swap(&stack_a);
 	else if (stack_a.size == 3)
 		ft_sort3(&stack_a);
+	else if (stack_a.size <= 5)
+		ft_sort_5_and_4(&stack_a, &stack_b);
 	else
 	{
 		ft_quicksort(&stack_a, &stack_b);

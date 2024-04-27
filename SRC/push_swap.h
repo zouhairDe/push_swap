@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:31:16 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/25 00:49:19 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/04/27 23:52:44 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ char	**ft_split(char *str, char c);
 size_t	ft_strlen(const char *str);
 //Sorting functions here
 void	ft_sort3(t_stack *a); //sorts 3 numbers
+void	ft_sort_5_and_4(t_stack *a, t_stack *b); //sorts 5 or 4 numbers
 void	ft_swap(t_stack *stack); //stands for sa || sb
 void	ft_rotate(t_stack *stack, int code); // stands for ra || rb
 void	ft_rerotate(t_stack *a, t_stack *b); //stands for rr
