@@ -6,13 +6,13 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 01:35:59 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/24 23:42:03 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/05 17:59:55 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_is_all_digit(char *str)
+static int	ft_is_all_digit(char *str)
 {
 	if (!str || !*str)
 		return (0);
@@ -80,7 +80,7 @@ int	ft_atoi(char *str)
 	return (nbr);
 }
 
-int	ft_get_smallest(t_stack *a, int number)
+static int	ft_get_smallest(t_stack *a, int number)
 {
 	int	i;
 	int	j;

@@ -6,13 +6,13 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:26:56 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/24 23:25:50 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:26:12 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	checksep(char c, char sep)
+static int	ft_checksep(char c, char sep)
 {
 	if (c == sep)
 		return (1);
@@ -28,30 +28,30 @@ static int	ft_countwords(char *str, char sep)
 	i = 0;
 	while (str[i])
 	{
-		while (str[i] && checksep(str[i], sep))
+		while (str[i] && ft_checksep(str[i], sep))
 			i++;
-		if (str[i] && !checksep(str[i], sep))
+		if (str[i] && !ft_checksep(str[i], sep))
 		{
 			i++;
 			words++;
 		}
-		while (str[i] && !checksep(str[i], sep))
+		while (str[i] && !ft_checksep(str[i], sep))
 			i++;
 	}
 	return (words);
 }
 
-static int	sstrlen(char *str, char c)
+static int	ft_sstrlen(char *str, char c)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] && !checksep(str[i], c))
+	while (str[i] && !ft_checksep(str[i], c))
 		i++;
 	return (i);
 }
 
-static char	*mallocwords(char *str, char **words, char c, int t)
+static char	*ft_mallocwords(char *str, char **words, char c, int t)
 {
 	int		i;
 	int		j;
@@ -59,14 +59,14 @@ static char	*mallocwords(char *str, char **words, char c, int t)
 
 	j = 0;
 	i = 0;
-	word = (char *)malloc(sizeof(char) * (sstrlen(str, c) + 1));
+	word = (char *)malloc(sizeof(char) * (ft_sstrlen(str, c) + 1));
 	if (!word)
 	{
 		while (i < t)
 			free(words[i++]);
 		return (NULL);
 	}
-	while (str[i] && !checksep(str[i], c))
+	while (str[i] && !ft_checksep(str[i], c))
 	{
 		word[j] = str[i];
 		i++;
@@ -89,16 +89,16 @@ char	**ft_split(char *str, char c)
 		return (NULL);
 	while (*str)
 	{
-		while (*str && checksep(*str, c))
+		while (*str && ft_checksep(*str, c))
 			str++;
-		if (*str && !checksep(*str, c))
+		if (*str && !ft_checksep(*str, c))
 		{
-			words[j] = mallocwords(str, words, c, j);
+			words[j] = ft_mallocwords(str, words, c, j);
 			if (!words[j])
 				return (free(words), NULL);
 			j++;
 		}
-		while (*str && !checksep(*str, c))
+		while (*str && !ft_checksep(*str, c))
 			str++;
 	}
 	words[j] = NULL;

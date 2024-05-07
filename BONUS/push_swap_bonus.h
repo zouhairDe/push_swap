@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:31:16 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/25 01:40:30 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:14:42 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 # define PUSH_SWAP_BONUS_H
 
 # include "GNL/get_next_line_bonus.h"
-# include <stdio.h>
 # include <unistd.h>
-# include <fcntl.h>
 # include <stdlib.h>
 
 typedef struct s_stack
@@ -34,7 +32,7 @@ typedef struct s_pivot
 	int	last_pivot;
 }	t_pivot;
 
-int		init_stack(t_stack *a, t_stack *b, int argc, char **argv);
+int		ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv);
 int		ft_atoi(char *str);
 int		ft_isdigit(int c);
 int		ft_is_sorted(t_stack *a);

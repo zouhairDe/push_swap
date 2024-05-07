@@ -6,13 +6,13 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:30:56 by zouddach          #+#    #+#             */
-/*   Updated: 2024/04/27 23:52:25 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/07 19:29:41 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_twod_len(char **argv)
+static int	ft_twod_len(char **argv)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ int	ft_twod_len(char **argv)
 	return (i);
 }
 
-void	free_stack(t_stack *a, t_stack *b)
+static void	ft_free_stack(t_stack *a, t_stack *b)
 {
 	int	i;
 
@@ -50,7 +50,7 @@ void	free_argv(char **argv)
 	free(argv);
 }
 
-void	ft_sumilate_args(int argc, char **argv, t_stack *a, t_stack *b)
+static void	ft_sumilate_args(int argc, char **argv, t_stack *a, t_stack *b)
 {
 	if (argc == 2)
 	{
@@ -62,14 +62,14 @@ void	ft_sumilate_args(int argc, char **argv, t_stack *a, t_stack *b)
 			free_argv(argv);
 			ft_usage(NULL, NULL);
 		}
-		if (!init_stack(a, b, ft_twod_len(argv), argv) || ft_checks(argv))
+		if (!ft_init_stack(a, b, ft_twod_len(argv), argv) || ft_checks(argv))
 		{
 			free_argv(argv);
 			ft_usage(a, b);
 		}
 		free_argv(argv);
 	}
-	else if (!init_stack(a, b, argc - 1, ++argv) || ft_checks(argv))
+	else if (!ft_init_stack(a, b, argc - 1, ++argv) || ft_checks(argv))
 		ft_usage(a, b);
 	if (!ft_positive_tab(a))
 		ft_usage(a, b);
@@ -99,6 +99,6 @@ int	main(int argc, char **argv)
 		ft_sort3(&stack_a);
 		ft_b_to_a(&stack_a, &stack_b);
 	}
-	free_stack(&stack_a, &stack_b);
+	ft_free_stack(&stack_a, &stack_b);
 	return (0);
 }

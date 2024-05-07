@@ -6,14 +6,13 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:31:16 by zouddach          #+#    #+#             */
-/*   Updated: 2024/04/27 23:52:44 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/07 19:29:56 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 
@@ -32,7 +31,7 @@ typedef struct s_pivot
 	int	last_pivot;
 }	t_pivot;
 
-int		init_stack(t_stack *a, t_stack *b, int argc, char **argv);
+int		ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv);
 int		ft_atoi(char *str);
 int		ft_isdigit(int c);
 int		ft_is_sorted(t_stack *a);

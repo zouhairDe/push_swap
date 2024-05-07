@@ -26,7 +26,7 @@ int	ft_is_sorted(t_stack *a)
 	return (1);
 }
 
-int	ft_is_duplicate(char	**argv)
+static int	ft_is_duplicate(char	**argv)
 {
 	int	i;
 	int	j;
@@ -46,7 +46,7 @@ int	ft_is_duplicate(char	**argv)
 	return (0);
 }
 
-int	ft_is_biger_than_ints(char **argv)
+static int	ft_is_biger_than_ints(char **argv)
 {
 	int	i;
 	int	j;

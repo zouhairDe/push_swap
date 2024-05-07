@@ -6,13 +6,13 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 00:59:14 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/25 02:02:13 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:10:10 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+static int	ft_strcmp(const char *s1, const char *s2)
 {
 	unsigned char	*_s1;
 	unsigned char	*_s2;
@@ -33,7 +33,7 @@ void	ft_sswap(t_stack *a, t_stack *b)
 	ft_swap(b);
 }
 
-void	ft_apply_instruction(t_stack *a, t_stack *b, char *instruction)
+static void	ft_apply_instruction(t_stack *a, t_stack *b, char *instruction)
 {
 	if (!ft_strcmp(instruction, "sa\n"))
 		ft_swap(a);

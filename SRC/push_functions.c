@@ -6,13 +6,14 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 03:00:11 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/24 23:24:57 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:28:18 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	fr_realloc_stack(t_stack *from, t_stack *to, int **tmp_from, int **tmp_to)
+static int	ft_realloc_stack(t_stack *from, t_stack *to,
+int **tmp_from, int **tmp_to)
 {
 	*tmp_from = (int *)malloc(sizeof(int) * (from->size - 1));
 	if (!tmp_from)
@@ -26,7 +27,7 @@ int	fr_realloc_stack(t_stack *from, t_stack *to, int **tmp_from, int **tmp_to)
 	return (0);
 }
 
-int	ft_maintain_stack(t_stack *from, t_stack *to)
+static int	ft_maintain_stack(t_stack *from, t_stack *to)
 {
 	int	*tmp_from;
 	int	*tmp_to;
@@ -34,7 +35,7 @@ int	ft_maintain_stack(t_stack *from, t_stack *to)
 
 	if (from->size == 0)
 		return (1);
-	if (fr_realloc_stack(from, to, &tmp_from, &tmp_to))
+	if (ft_realloc_stack(from, to, &tmp_from, &tmp_to))
 		return (1);
 	i = -1;
 	while (++i < from->size - 1)

@@ -6,13 +6,13 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 16:23:13 by zouddach          #+#    #+#             */
-/*   Updated: 2024/03/25 00:46:26 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:08:44 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	ft_free_all(t_stack *a, t_stack *b)
+static void	ft_free_all(t_stack *a, t_stack *b)
 {
 	if (a->numbers)
 		free(a->numbers);

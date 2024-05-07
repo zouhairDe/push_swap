@@ -6,13 +6,13 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 01:33:51 by zouddach          #+#    #+#             */
-/*   Updated: 2024/04/21 17:20:56 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/05 17:55:07 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_pivots(t_pivot *pivot, t_stack *a)
+static void	init_pivots(t_pivot *pivot, t_stack *a)
 {
 	pivot->last_pivot = pivot->first_pivot;
 	pivot->sec_pivot = a->size / 6 + pivot->first_pivot;
@@ -44,7 +44,7 @@ void	ft_quicksort(t_stack *a, t_stack *b)
 	}
 }
 
-int	get_pos(t_stack *b, int a_tab)
+static int	get_pos(t_stack *b, int a_tab)
 {
 	int	i;
 
@@ -58,7 +58,7 @@ int	get_pos(t_stack *b, int a_tab)
 	return (i);
 }
 
-void	ft_b_too_a(t_stack *a, t_stack *b, int *tracker)
+static void	ft_b_too_a(t_stack *a, t_stack *b, int *tracker)
 {
 	int	pos;
 

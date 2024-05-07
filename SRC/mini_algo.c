@@ -6,25 +6,25 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 00:59:14 by zouddach          #+#    #+#             */
-/*   Updated: 2024/04/27 23:53:07 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:01:15 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sort4(t_stack *a, t_stack *b)
+static void	ft_sort4(t_stack *a, t_stack *b)
 {
-	int i;
+	int	i;
 	int	zero_pos;
 	int	mid;
 
 	i = 0;
 	zero_pos = 0;
 	mid = a->size / 2;
-	while(i < a->size && a->tab[i++] != 0)
+	while (i < a->size && a->tab[i++] != 0)
 		zero_pos++;
 	i = 0;
-	while(a->tab[i] != 0)
+	while (a->tab[i] != 0)
 	{
 		if (zero_pos < mid)
 			ft_rotate(a, 1);
@@ -36,17 +36,17 @@ void	ft_sort4(t_stack *a, t_stack *b)
 	ft_push(b, a);
 }
 
-void	ft_complete_sort5(t_stack *a, t_stack *b, int mid)
+static void	ft_complete_sort5(t_stack *a, t_stack *b, int mid)
 {
-	int i;
+	int	i;
 	int	zero_pos;
 
 	i = 0;
 	zero_pos = 0;
-	while(i < a->size && a->tab[i++] != 1)
+	while (i < a->size && a->tab[i++] != 1)
 		zero_pos++;
 	i = 0;
-	while(a->tab[i] != 1)
+	while (a->tab[i] != 1)
 	{
 		if (zero_pos < mid)
 			ft_rotate(a, 1);
@@ -61,7 +61,7 @@ void	ft_complete_sort5(t_stack *a, t_stack *b, int mid)
 
 void	ft_sort_5_and_4(t_stack *a, t_stack *b)
 {
-	int i;
+	int	i;
 	int	zero_pos;
 	int	mid;
 
@@ -72,10 +72,10 @@ void	ft_sort_5_and_4(t_stack *a, t_stack *b)
 		i = 0;
 		zero_pos = 0;
 		mid = a->size / 2;
-		while(i < a->size && a->tab[i++] != 0)
+		while (i < a->size && a->tab[i++] != 0)
 			zero_pos++;
 		i = 0;
-		while(a->tab[i] != 0)
+		while (a->tab[i] != 0)
 		{
 			if (zero_pos < mid)
 				ft_rotate(a, 1);
