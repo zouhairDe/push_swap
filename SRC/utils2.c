@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 01:35:59 by zouddach          #+#    #+#             */
-/*   Updated: 2024/05/05 17:59:55 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/12 17:55:32 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,34 +27,9 @@ static int	ft_is_all_digit(char *str)
 	return (1);
 }
 
-int	ft_larger_than(char *str, char *max)
+long	ft_atoi(char *str, t_stack *a, t_stack *b)
 {
-	int	i;
-	int	len;
-
-	i = 0;
-	len = ft_strlen(max);
-	while (*str == '0')
-		str++;
-	while (*(str + i) >= '0' && *(str + i) <= '9')
-		i++;
-	if (i > len)
-		return (1);
-	else if (i < len)
-		return (0);
-	while (*str >= '0' && *str <= '9')
-	{
-		if (*str > *max)
-			return (1);
-		else if (*str++ < *max++)
-			return (0);
-	}
-	return (0);
-}
-
-int	ft_atoi(char *str)
-{
-	int		nbr;
+	long	nbr;
 	char	sign;
 
 	nbr = 0;
@@ -66,17 +41,18 @@ int	ft_atoi(char *str)
 	if (*str == '-')
 	{
 		sign = -1;
-		if (ft_larger_than(str++, "2147483648"))
-			return (-1);
+		str++;
 	}
 	else if (*str == '+')
-		if (ft_larger_than(str++, "2147483647"))
-			return (-1);
+		str++;
 	while (*str >= '0' && *str <= '9')
 	{
 		nbr = (nbr * 10) + (*str - '0') * sign;
 		str++;
 	}
+	if (((*str < '0' || *str > '9') && *str != '\0')
+		|| (nbr > 2147483647 || nbr < -2147483648))
+		ft_usage(a, b);
 	return (nbr);
 }
 

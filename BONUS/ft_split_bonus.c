@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:26:56 by zouddach          #+#    #+#             */
-/*   Updated: 2024/05/05 18:09:28 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/12 17:59:40 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_checksep(char c, char sep)
 	return (0);
 }
 
-static int	ft_countwords(char *str, char sep)
+int	ft_countwords(char *str, char sep)
 {
 	int	i;
 	int	words;

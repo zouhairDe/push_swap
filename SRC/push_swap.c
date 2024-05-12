@@ -6,23 +6,13 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:30:56 by zouddach          #+#    #+#             */
-/*   Updated: 2024/05/07 19:29:41 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/12 18:26:05 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_twod_len(char **argv)
-{
-	int	i;
-
-	i = 0;
-	while (argv[i])
-		i++;
-	return (i);
-}
-
-static void	ft_free_stack(t_stack *a, t_stack *b)
+int	ft_free_stack(t_stack *a, t_stack *b)
 {
 	int	i;
 
@@ -35,6 +25,7 @@ static void	ft_free_stack(t_stack *a, t_stack *b)
 		free(a->tab);
 	if (b->tab)
 		free(b->tab);
+	return (1);
 }
 
 void	free_argv(char **argv)
@@ -42,6 +33,8 @@ void	free_argv(char **argv)
 	int	i;
 
 	i = 0;
+	if (!argv)
+		return ;
 	while (argv[i])
 	{
 		free(argv[i]);
@@ -50,26 +43,12 @@ void	free_argv(char **argv)
 	free(argv);
 }
 
-static void	ft_sumilate_args(int argc, char **argv, t_stack *a, t_stack *b)
+static void	ft_sumilate_args(char **argv, t_stack *a, t_stack *b)
 {
-	if (argc == 2)
-	{
-		argv = ft_split(argv[1], ' ');
-		if (!argv)
-			exit(1);
-		if (ft_twod_len(argv) == 1 && !ft_isnumber(argv[0]))
-		{
-			free_argv(argv);
-			ft_usage(NULL, NULL);
-		}
-		if (!ft_init_stack(a, b, ft_twod_len(argv), argv) || ft_checks(argv))
-		{
-			free_argv(argv);
-			ft_usage(a, b);
-		}
-		free_argv(argv);
-	}
-	else if (!ft_init_stack(a, b, argc - 1, ++argv) || ft_checks(argv))
+	if (ft_checks(argv))
+		ft_usage(NULL, NULL);
+	ft_checks2(argv, a, b);
+	if (ft_is_duplicate(a->numbers, a->size))
 		ft_usage(a, b);
 	if (!ft_positive_tab(a))
 		ft_usage(a, b);
@@ -81,12 +60,11 @@ int	main(int argc, char **argv)
 	t_stack	stack_b;
 
 	if (argc < 2)
-		return (0);
-	ft_sumilate_args(argc, argv, &stack_a, &stack_b);
+		return (1);
+	ft_init_structs(&stack_a, &stack_b);
+	ft_sumilate_args(argv, &stack_a, &stack_b);
 	if (ft_is_sorted(&stack_a))
-		return (0);
-	if (stack_a.size == 1)
-		return (0);
+		return (ft_free_stack(&stack_a, &stack_b));
 	else if (stack_a.size == 2)
 		ft_swap(&stack_a);
 	else if (stack_a.size == 3)

@@ -12,6 +12,34 @@
 
 #include "push_swap_bonus.h"
 
+void	ft_checks2(char **argv, t_stack *a, t_stack *b)
+{
+	char	**args;
+	int		i;
+	int		j;
+
+	i = 1;
+	while (argv[i])
+	{
+		j = 0;
+		if (ft_countwords(argv[i], ' ') == 0)
+			ft_usage(a, b);
+		args = ft_split(argv[i], ' ');
+		if (!args)
+		{
+			ft_free_stack(a, b);
+			exit(1);
+		}
+		while (args[j])
+		{
+			ft_add_to_stack(a, ft_atoi(args[j], a, b));
+			j++;
+		}
+		free_argv(args);
+		i++;
+	}
+}
+
 int	ft_is_sorted(t_stack *a)
 {
 	int	i;
@@ -26,18 +54,18 @@ int	ft_is_sorted(t_stack *a)
 	return (1);
 }
 
-static int	ft_is_duplicate(char	**argv)
+int	ft_is_duplicate(int *r, int size)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (argv[i])
+	while (i < size)
 	{
 		j = i + 1;
-		while (argv[j])
+		while (j < size)
 		{
-			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
+			if (r[i] == r[j])
 				return (1);
 			j++;
 		}
@@ -46,48 +74,30 @@ static int	ft_is_duplicate(char	**argv)
 	return (0);
 }
 
-static int	ft_is_biger_than_ints(char **argv)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (argv[i])
-	{
-		j = 0;
-		if (argv[i][j] == '-' || argv[i][j] == '+')
-		{
-			if (argv[i][j++] == '-')
-			{
-				if (ft_larger_than(&argv[i][j], "2147483648"))
-					return (0);
-			}
-			else
-				if (ft_larger_than(&argv[i][j], "2147483647"))
-					return (0);
-		}
-		else
-			if (ft_larger_than(&argv[i][j], "2147483647"))
-				return (0);
-		i++;
-	}
-	return (1);
-}
-
 int	ft_checks(char **argv)
 {
-	int	i;
+	char	**args;
+	int		i;
+	int		j;
 
 	i = 1;
 	while (argv[i])
 	{
-		if (!ft_isnumber(argv[i]))
+		j = 0;
+		args = ft_split(argv[i], ' ');
+		if (!args)
 			return (1);
+		while (args[j])
+		{
+			if (!ft_isnumber(args[j]))
+			{
+				free_argv(args);
+				return (1);
+			}
+			j++;
+		}
 		i++;
+		free_argv(args);
 	}
-	if (ft_is_duplicate(argv))
-		return (1);
-	if (!ft_is_biger_than_ints(argv))
-		return (1);
 	return (0);
 }

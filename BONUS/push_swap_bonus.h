@@ -6,7 +6,7 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:31:16 by zouddach          #+#    #+#             */
-/*   Updated: 2024/05/05 18:14:42 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/12 17:59:57 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,19 @@ typedef struct s_pivot
 }	t_pivot;
 
 int		ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv);
-int		ft_atoi(char *str);
+int		ft_add_to_stack(t_stack *a, int value);
 int		ft_isdigit(int c);
 int		ft_is_sorted(t_stack *a);
 int		ft_checks(char **argv);
 int		ft_positive_tab(t_stack *a);
-int		ft_larger_than(char *str, char *max);
 int		ft_isnumber(char *str);
+int		ft_countwords(char *str, char sep);
+int		ft_is_duplicate(int *r, int size);
+long	ft_atoi(char *str, t_stack *a, t_stack *b);
+void	ft_init_structs(t_stack *a, t_stack *b);
+void	free_argv(char **argv);
+void	ft_free_stack(t_stack *a, t_stack *b);
+void	ft_checks2(char **argv, t_stack *a, t_stack *b);
 void	ft_quicksort(t_stack *a, t_stack *b);
 void	ft_b_to_a(t_stack *a, t_stack *b);
 void	ft_usage(t_stack *a, t_stack *b);

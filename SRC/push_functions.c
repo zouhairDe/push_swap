@@ -6,11 +6,39 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 03:00:11 by zouddach          #+#    #+#             */
-/*   Updated: 2024/05/05 18:28:18 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/12 18:26:39 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_checks2(char **argv, t_stack *a, t_stack *b)
+{
+	char	**args;
+	int		i;
+	int		j;
+
+	i = 1;
+	while (argv[i])
+	{
+		j = 0;
+		if (ft_countwords(argv[i], ' ') == 0)
+			ft_usage(a, b);
+		args = ft_split(argv[i], ' ');
+		if (!args)
+		{
+			ft_free_stack(a, b);
+			exit(1);
+		}
+		while (args[j])
+		{
+			ft_add_to_stack(a, ft_atoi(args[j], a, b));
+			j++;
+		}
+		free_argv(args);
+		i++;
+	}
+}
 
 static int	ft_realloc_stack(t_stack *from, t_stack *to,
 int **tmp_from, int **tmp_to)
@@ -56,7 +84,7 @@ static int	ft_maintain_stack(t_stack *from, t_stack *to)
 int	ft_push(t_stack *from, t_stack *to)
 {
 	if (ft_maintain_stack(from, to))
-		return (1);
+		ft_usage(from, to);
 	if (to->id == 1)
 		write(1, "pa\n", 3);
 	else

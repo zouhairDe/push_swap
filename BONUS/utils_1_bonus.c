@@ -6,13 +6,13 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:43:21 by zouddach          #+#    #+#             */
-/*   Updated: 2024/05/05 18:12:22 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/11 19:16:41 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-static int	add_to_stack(t_stack *a, int value)
+int	ft_add_to_stack(t_stack *a, int value)
 {
 	int	*new_tab;
 	int	i;
@@ -21,7 +21,7 @@ static int	add_to_stack(t_stack *a, int value)
 	if (!new_tab)
 		return (0);
 	i = 0;
-	while (a->numbers && i < a->size)
+	while (i < a->size)
 	{
 		new_tab[i] = a->numbers[i];
 		i++;
@@ -59,7 +59,7 @@ int	ft_isnumber(char *str)
 	return (1);
 }
 
-static void	init_structs(t_stack *a, t_stack *b)
+void	ft_init_structs(t_stack *a, t_stack *b)
 {
 	a->id = 1;
 	a->size = 0;
@@ -76,10 +76,9 @@ int	ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv)
 	int	i;
 
 	i = 0;
-	init_structs(a, b);
 	while (i < argc)
 	{
-		if (!add_to_stack(a, ft_atoi(argv[i])))
+		if (!ft_add_to_stack(a, ft_atoi(argv[i], a, b)))
 			return (0);
 		i++;
 	}

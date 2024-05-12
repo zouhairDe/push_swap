@@ -6,13 +6,13 @@
 /*   By: zouddach <zouddach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:43:21 by zouddach          #+#    #+#             */
-/*   Updated: 2024/05/05 17:59:38 by zouddach         ###   ########.fr       */
+/*   Updated: 2024/05/11 19:06:55 by zouddach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_add_to_stack(t_stack *a, int value)
+int	ft_add_to_stack(t_stack *a, int value)
 {
 	int	*new_tab;
 	int	i;
@@ -35,7 +35,7 @@ static int	ft_add_to_stack(t_stack *a, int value)
 
 int	ft_isdigit(int c)
 {
-	return (c >= '0' && c <= '9');
+	return ((c >= '0' && c <= '9') || c == ' ');
 }
 
 int	ft_isnumber(char *str)
@@ -59,7 +59,7 @@ int	ft_isnumber(char *str)
 	return (1);
 }
 
-static void	ft_init_structs(t_stack *a, t_stack *b)
+void	ft_init_structs(t_stack *a, t_stack *b)
 {
 	a->id = 1;
 	a->size = 0;
@@ -76,10 +76,9 @@ int	ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv)
 	int	i;
 
 	i = 0;
-	ft_init_structs(a, b);
 	while (i < argc)
 	{
-		if (!ft_add_to_stack(a, ft_atoi(argv[i])))
+		if (!ft_add_to_stack(a, ft_atoi(argv[i], a, b)))
 			return (0);
 		i++;
 	}
